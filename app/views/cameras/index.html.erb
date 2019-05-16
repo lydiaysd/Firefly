@@ -1,0 +1,10 @@
+<h1>All cameras</h1>
+
+<% @cameras.each do |camera| %>
+  <h2> <%= camera.name %> </h2>
+  <li> <%= camera.brand %> </li>
+  <li> <%= camera.price %> </li>
+  <li> <%= camera.description %> </li>
+  <li> <%= camera.availability %> </li>
+
+<% end %>
