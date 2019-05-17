@@ -1,25 +1,35 @@
 class CamerasController < ApplicationController
-  before_action :find_camera, only: [:show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :find_camera, only: [:show, :destroy]
 
   def index
-    @cameras = Camera.all
+    @cameras = policy_scope(Camera)
   end
 
   def show
-
+    authorize @camera
   end
 
   def new
     @camera = Camera.new
+    authorize @camera
   end
 
   def create
-    @camera = Camera.create(set_params)
+    @camera = Camera.new(set_params)
+    @camera.user = current_user
+    authorize @camera
     if @camera.save
       redirect_to camera_path(@camera)
     else
       render :new
     end
+  end
+
+  def destroy
+    authorize @camera
+    @camera.destroy
+    redirect_to cameras_path
   end
 
   private
@@ -29,7 +39,6 @@ class CamerasController < ApplicationController
   end
 
   def set_params
-    paramas.require(:camera).permit(:name, :brand, :price, :description, :availability)
+    params.require(:camera).permit(:name, :brand, :price, :description, :start_date, :end_date)
   end
-
 end

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-
   resources :cameras, only: [:index, :show, :new, :create, :delete] do
 
   resources :rentals

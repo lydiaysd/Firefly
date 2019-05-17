@@ -1,10 +1,22 @@
 <h1>All cameras</h1>
 
 <% @cameras.each do |camera| %>
-  <h2> <%= camera.name %> </h2>
+  <h2> <%= link_to camera.name, camera_path(camera) %> </h2>
   <li> <%= camera.brand %> </li>
   <li> <%= camera.price %> </li>
   <li> <%= camera.description %> </li>
-  <li> <%= camera.availability %> </li>
-
+  <li> <%= camera.start_date %> </li>
+  <li> <%= camera.end_date %> </li>
+  <li> <% if policy(camera).destroy? %>
+    <%= link_to(camera_path(camera), method: :delete) do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
+  <% end %></li>
 <% end %>
+
+<% if policy(Camera).create? %>
+  <%= link_to "New camera", new_camera_path %>
+<% end %>
+
+<%= link_to "log out", destroy_user_session_path, method: :delete %>
+<%= link_to "log in", new_user_session_path %>
