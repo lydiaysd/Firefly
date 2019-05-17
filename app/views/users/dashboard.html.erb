@@ -1,0 +1,10 @@
+<% @cameras.each do |camera| %>
+  <h3><%= camera.name %></h3>
+  <h3><%= camera.brand %></h3>
+  <h3><%= camera.description %></h3>
+
+<% end %>
+
+<%= link_to "Back to Profile", user_path(current_user)  %>
+
+
