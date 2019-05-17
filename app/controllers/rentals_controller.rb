@@ -1,9 +1,5 @@
 class RentalsController < ApplicationController
-  # before_action :set_rentals, only: [:show, :edit, :update, :destroy]
-    # before_action :set_rentals, only: [:show, :edit, :update, :destroy]
-  # GET /restaurants
- skip_before_action :authenticate_user!, only: [:home]
-
+  skip_before_action :authenticate_user!
 
   def new
     @rental = Rental.new
@@ -16,6 +12,7 @@ class RentalsController < ApplicationController
   end
 
   private
-    def rental_params
+
+  def rental_params
   end
 end
