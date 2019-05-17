@@ -1,13 +1,25 @@
-<h1>Pages#landing</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: url(https://images.pexels.com/photos/122400/pexels-photo-122400.jpeg?cs=srgb&dl=camera-macro-optics-122400.jpg&fm=jpg);">
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://www.pexels.com/photo/shallow-focus-photo-of-dslr-camera-on-brown-wooden-table-122400/);">
-  <div class="container">
-    <h1>Le Wagon brings <strong>tech skills</strong> to <strong>creative people</strong>!</h1>
-    <p>Change your life and learn to code at one of our campuses around the world.</p>
-    <a class="btn btn-flat" href="#">Apply now</a>
+  <div class="search-form">
+    <h3>Find the best cameras near you</h3>
+      <%= form_tag(cameras_path) do %>
+      <div class="field-header"> <p>MODEL</p> </div>
+      <%= text_field_tag :camera, placeholder="", class: "form-field" %>
+      <div class="field-header"> <p>LOCATION</p> </div>
+      <%= text_field_tag :location, placeholder="", class: "form-field" %>
+      <div class="form-inline" style="justify-content: space-between;">
+        <div style="width: 48%">
+          <div class="field-header"><p>START DATE</p></div>
+          <%= text_field_tag :start_date, placeholder="", class: "form-field"  %>
+        </div>
+        <div style="width: 48%">
+          <div class="field-header"> <p>END DATE</p> </div>
+          <%= text_field_tag :end_date, placeholder="", class: "form-field"  %>
+        </div>
+      </div>
+      <%= link_to 'Search', cameras_path, class: "btn btn-primary" %>
+    <% end %>
   </div>
-</div>
+ </div>
 
 
-<%= link_to 'Show all', cameras_path, class: "btn btn-primary" %>
