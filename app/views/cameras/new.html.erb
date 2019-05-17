@@ -1,11 +1,11 @@
 Hi
 
 <%= simple_form_for [@camera] do |f| %>
-        <%= f.input :name %>
-        <%= f.input :brand %>
-        <%= f.input :price %>
-        <%= f.input :description %>
-        <%= f.input :availability %>
-
-        <%= f.submit class: "btn btn-primary" %>
-      <% end %>
+  <%= f.input :name %>
+  <%= f.input :brand %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.date_select :start_date %>
+  <%= f.date_select :end_date %>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
