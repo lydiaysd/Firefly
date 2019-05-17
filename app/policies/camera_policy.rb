@@ -5,15 +5,15 @@ class CameraPolicy < ApplicationPolicy
     end
   end
 
-    def show?
-      true
-    end
+  def show?
+    true
+  end
 
-    def create?
-      user
-    end
+  def create?
+    user
+  end
 
-    def destroy
-      record.user == user
-    end
+  def destroy?
+    record.user == user
+  end
 end

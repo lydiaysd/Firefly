@@ -27,6 +27,7 @@ class CamerasController < ApplicationController
   end
 
   def destroy
+    authorize @camera
     @camera.destroy
     redirect_to cameras_path
   end

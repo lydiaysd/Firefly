@@ -7,11 +7,11 @@
   <li> <%= camera.description %> </li>
   <li> <%= camera.start_date %> </li>
   <li> <%= camera.end_date %> </li>
-  <li> <%= link_to(camera_path(camera), method: :delete) do %>
+  <li> <% if policy(camera).destroy? %>
+    <%= link_to(camera_path(camera), method: :delete) do %>
       <i class="fas fa-trash"></i>
-
-  <% end %> </li>
-
+    <% end %>
+  <% end %></li>
 <% end %>
 
 <% if policy(Camera).create? %>
