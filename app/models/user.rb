@@ -5,8 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :cameras
   has_many :rentals
-  validates :name, presence: true
-  validates :bio, presence: true
-  validates :location, presence: true
-  validates :phone_number, presence: true
 end
