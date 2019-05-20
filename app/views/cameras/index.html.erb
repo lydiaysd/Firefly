@@ -51,36 +51,30 @@
       <%= link_to 'Location', cameras_path, class: "btn" %>
   </ul>
 </div>
-
-<h1>All cameras</h1>
-
 <!-- iteration for cards to be created AKA keep creating cards if there's data-->
-
-<!-- iterate on card DATA -->
-
-
-
-<div class="camera-cards">
-  <% @cameras.each do |camera| %>
-    <%= cl_image_tag camera.photo %>
-    <div class="card-camera-info">
-      <div>
-        <h2> <%= link_to camera.name, camera_path(camera) || camera.brand %> </h2>
-        <p> <%= camera.price %> </p>
-        <p> <%= camera.address %> </p>
+<div class="body-container">
+  <div class="camera-cards">
+    <% @cameras.each do |camera| %>
+      <%= cl_image_tag camera.photo %>
+      <div class="card-camera-info">
+        <div>
+          <p class="name-styling"> <%= link_to camera.name, camera_path(camera) || camera.brand %> </p>
+          <p class="price-styling"> £<%= camera.price  %> </p>
+          <p class="address-styling"> <%= camera.address %> </p>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="index-map">
-  <div
-    id="map"
-    style="width: 100%;
-    height: 600px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+  <div class="index-map">
+    <div
+      id="map"
+      style="width: 100%;
+      height: 600px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
 </div>
 
 
