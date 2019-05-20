@@ -4,6 +4,13 @@ class CamerasController < ApplicationController
 
   def index
     @cameras = policy_scope(Camera)
+
+    @markers = @cameras.map do |camera|
+      {
+        lat: camera.latitude,
+        lng: camera.longitude
+      }
+    end
   end
 
   def show
@@ -39,6 +46,6 @@ class CamerasController < ApplicationController
   end
 
   def set_params
-    params.require(:camera).permit(:name, :brand, :price, :description, :start_date, :end_date)
+    params.require(:camera).permit(:name, :brand, :price, :description, :address, :start_date, :end_date)
   end
 end
