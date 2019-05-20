@@ -65,7 +65,7 @@
     <%= cl_image_path camera.photo %>
     <div class="card-camera-info">
       <div>
-        <h2> <%= link_to camera.name, camera_path(camera) "|" camera.brand %> </h2>
+        <h2> <%= link_to camera.name, camera_path(camera) || camera.brand %> </h2>
         <p> <%= camera.price %> </p>
         <p> <%= camera.address %> </p>
       </div>
@@ -73,7 +73,7 @@
   <% end %>
 </div>
 
-<div class="map">
+<div class="index-map">
   <h2>PUT A MAP HERE</h2>
 </div>
 
