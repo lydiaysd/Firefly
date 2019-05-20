@@ -1,6 +1,15 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-firefly">
   <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+  <%= image_tag 'firefly-white-logo.png' %>
+  <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+  <div class="search-form-control form-group">
+    <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for cameras..." />
+    <button name="button" type="submit" class="btn btn-flat">
+      <i class="fas fa-search"></i>
+    </button>
+  </div>
+<% end %>
+
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,10 +20,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to "Home", root_path, class: "nav-link" %>
+        <%= link_to "List an item", new_camera_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Messages", "#", class: "nav-link" %>
+      <li class="nav-item active">
+        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Log in", user_session_path, class: "nav-link" %>
       </li>
       <li class="nav-item dropdown">
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -30,21 +42,50 @@
   </div>
 </div>
 
+<div class="btn-bar">
+  <ul class="search-btn">
+      <%= link_to 'Brand', cameras_path, class: "btn" %>
+      <%= link_to 'Category', cameras_path, class: "btn" %>
+      <%= link_to 'Price', cameras_path, class: "btn" %>
+      <%= link_to 'Dates', cameras_path, class: "btn" %>
+      <%= link_to 'Location', cameras_path, class: "btn" %>
+  </ul>
+</div>
+
 <h1>All cameras</h1>
 
-<% @cameras.each do |camera| %>
-  <h2> <%= link_to camera.name, camera_path(camera) %> </h2>
-  <li> <%= camera.brand %> </li>
-  <li> <%= camera.price %> </li>
-  <li> <%= camera.description %> </li>
-  <li> <%= camera.start_date %> </li>
-  <li> <%= camera.end_date %> </li>
-  <li> <% if policy(camera).destroy? %>
-    <%= link_to(camera_path(camera), method: :delete) do %>
-      <i class="fas fa-trash"></i>
-    <% end %>
-  <% end %></li>
-<% end %>
+<!-- iteration for cards to be created AKA keep creating cards if there's data-->
+
+<!-- iterate on card DATA -->
+
+
+
+<div class="camera-cards">
+  <% @cameras.each do |camera| %>
+    <%= cl_image_path camera.photo %>
+    <div class="card-camera-info">
+      <div>
+        <h2> <%= link_to camera.name, camera_path(camera) || camera.brand %> </h2>
+        <p> <%= camera.price %> </p>
+        <p> <%= camera.address %> </p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="index-map">
+  <h2>PUT A MAP HERE</h2>
+</div>
+
+
+
+
+
+
+
+
+
+
 
 <div
   id="map"
