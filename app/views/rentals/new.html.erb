@@ -14,5 +14,6 @@
     <%= simple_form_for([@camera, @rental]) do |f| %>
     <%= f.submit "Confirm", class: "card-rental-button btn btn-primary"%>
     <% end %>
+    <%= link_to "Back", camera_path(@camera) %>
   </div>
 </div>

@@ -1,6 +1,7 @@
 <h1 class="text-center m-3"> Camera <%= @camera.name %></h1>
 <%= cl_image_tag @camera.photo, height: 300, width: 400, crop: :fill %>
-
-<%= link_to "Rent!", new_camera_rental_path(@camera, @user), class: "btn btn-primary" %>
+<% if current_user %>
+  <%= link_to "Rent!", new_camera_rental_path(@camera, @user), class: "btn btn-primary" %>
+<% end %>
 
 <%= link_to 'Back', cameras_path, class: "btn btn-primary" %>

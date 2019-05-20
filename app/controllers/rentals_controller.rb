@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!
   before_action :find_camera, only: [:show, :new, :create]
 
   def index
@@ -28,6 +28,12 @@ class RentalsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @rental = Rental.find(params[:id])
+    @rental.destroy
+    redirect_to camera_rentals_path
   end
 
   private
