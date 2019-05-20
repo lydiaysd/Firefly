@@ -78,7 +78,7 @@
 }
 
 .camera-cards > img {
-  height: 200px;
+  height: 30%;
   width: 100%;
   object-fit: cover;
 }
@@ -131,10 +131,12 @@
 
 .body-container {
   width:100%;
-  height:60px;
+  height:100%;
   position:relative;
   // white-space: nowrap;
   // overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .index-map {
