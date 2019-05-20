@@ -20,7 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <%= link_to "List an item", new_camera_path, class: "nav-link" %>
+        <%= link_to "List a camera", new_camera_path, class: "nav-link" %>
       </li>
       <li class="nav-item active">
         <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
@@ -74,7 +74,13 @@
 </div>
 
 <div class="index-map">
-  <h2>PUT A MAP HERE</h2>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 </div>
 
 
@@ -87,17 +93,6 @@
 
 
 
-<div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
-
-<% if policy(Camera).create? %>
-  <%= link_to "New camera", new_camera_path %>
-<% end %>
 
 <%= link_to "log out", destroy_user_session_path, method: :delete %>
 

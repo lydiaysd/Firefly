@@ -103,6 +103,21 @@
   position: relative;
 }
 
+// MAP styling below
+
+.index-map {
+  z-index: 3;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  border-width: 0px;
+  margin: 0px;
+  left: 0px;
+  top: 0px;
+  touch-action: pan-x pan-y;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   .cards {
