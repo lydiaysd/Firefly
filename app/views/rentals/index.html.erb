@@ -1,0 +1,10 @@
+
+  <h3>Hi <%= @user.name %>, check your purchases! </h3>
+  <h6>You have <%= @rentals.count %> purchases:</h6>
+<% @rentals.each do |rental| %>
+  <h1><%= rental.camera.name %></h1>
+  <h2>£ <%= rental.camera.price %></h2>
+  <p>Date of rental: <%= rental.camera.created_at.strftime("%d/%m/%Y at %I:%M%p") %></p>
+<% end %>
+
+<%= link_to "List", cameras_path %>

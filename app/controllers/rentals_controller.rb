@@ -1,8 +1,9 @@
 class RentalsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:new, :create]
   before_action :find_camera, only: [:show, :new, :create]
 
   def index
+    @rentals = policy_scope(Rental)
     @user = current_user
     @rentals = Rental.where(user: @user)
     @cameras = Camera.where(user: @user)
