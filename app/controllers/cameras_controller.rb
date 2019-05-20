@@ -46,6 +46,6 @@ class CamerasController < ApplicationController
   end
 
   def set_params
-    params.require(:camera).permit(:name, :brand, :price, :description, :address, :start_date, :end_date)
+    params.require(:camera).permit(:name, :brand, :price, :description, :address, :start_date, :end_date, :photo)
   end
 end
