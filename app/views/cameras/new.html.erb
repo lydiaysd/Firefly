@@ -1,27 +1,40 @@
 <!-- NAVBAR IMPORTED-->
-<h2 class="new-page-title">Add a new camera</h2>
 
-<div class="new-item-form">
-    <%= form_for [@camera] do |f| %>
-    <%= f.text_field :name %>
-    <%= f.text_field :brand %>
-    <%= f.text_field :price %>
-    <%= f.text_area :description, :size => "60x12"%>
-    <%= f.text_field :address %>
-    <%= select_date Date.today, :prefix => :start_date %>
-    <%= f.date_select :end_date %>
-  <!-- <div class="photo-upload">
-    <% form_tag({:action => :upload}, :multipart => true) do %>
-      <%= file_field_tag 'photo' %>
-    <% end %> -->
-    <%# f.input :photo %>
-    <%# f.input :photo_cache, as: :hidden %>
+<div class="new-item-form mt-4">
+  <h2 class="new-page-title">Add a new camera</h2>
+  <%= simple_form_for @camera do |f| %>
+  <div class="d-flex justify-content-between align-items-start">
+    <div class="left-section mr-2">
+      <h5>What's the camera?</h5>
+      <div class="d-flex">
+        <div class="left-inputs">
+          <%= f.input :brand, label: false, placeholder:'Nikon', wrapper_html: { class: 'mr-2 mb-1' } %>
+          <p>Brand</p>
+        </div>
+        <div class="left-inputs">
+          <%= f.input :name, label: false, placeholder:'D90', wrapper_html: { class: 'mb-1' } %>
+          <p>Model</p>
+        </div>
+      </div>
+      <%= f.input :photo, input_html: { class: 'd-none', id:'photo-input'}, label_html: { class: 'upload-photo'}, label: "#{image_tag 'cloud_upload.png'}(click here to upload images)".html_safe %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= image_tag "", width: 100, height:100, class: "d-none", id: "photo-preview" %>
+    </div>
+    <div class="right-section ml-2">
+      <%= f.input :description, label: false, placeholder:'description', input_html: { rows: 4 } %>
+      <%= f.input :address, label: false, placeholder:'address' %>
+      <%= f.input :price, label: false, placeholder:'price/day' %>
+      <%= f.date_select :start_date %>
+      <%= f.date_select :end_date %>
+    </div>
   </div>
-  <div class="form-inline" style="justify-content:space-between;">
-    <%= link_to 'Back', cameras_path, class: "btn btn-primary float-left" %>
-    <%= f.submit "Add", class: "btn btn-primary" %>
-  </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <%= link_to 'Back', cameras_path, class: "btn btn-primary back-btn" %>
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    </div>
   <% end %>
 </div>
 
-
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_uploader' %>
+<% end %>
