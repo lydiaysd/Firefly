@@ -1,24 +1,26 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-firefly justify-content-between">
   <%= link_to "#", class: "navbar-brand" do %>
-  <div class="image-logo">
-    <%= image_tag 'firefly-white-logo.png' %>
-  </div>
+    <div class="image-logo">
+      <%= image_tag 'firefly-white-logo.png' %>
+    </div>
+  <% end %>
 
-   <!--  <div class="search-form-control form-group">
-      <%= simple_form_for :search, url: root_path, method: :get do |f| %>
-      <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Search for cameras..."/>
-      <% end %>
-    </div> -->
-<% end %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <%= simple_form_for :search, url: root_path, method: :get, class: "search-bar" do |f| %>
+      <form class="form-inline string required" type="text" name="search[query]" id="fulana-input">
+        <input class="form-control fas" type="text" placeholder='&#xf002; Search for cameras...'/>
+      </form>
+    <% end %>
+  </div>
 
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <input class= "fulana-input" type="text">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <div class="collapse navbar-collapse move-right" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <%= link_to "List a camera", new_camera_path, class: "nav-link" %>
