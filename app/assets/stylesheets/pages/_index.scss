@@ -1,6 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "new";
+// @import navbar;
 
 .navbar-firefly {
   background-color: #843477;
@@ -14,7 +15,7 @@
 }
 
 .navbar-firefly .navbar-brand img {
-  width: 40px;
+  width: 35px;
 }
 
 .navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
@@ -32,7 +33,6 @@
   border-radius: 8px;
 }
 
-
 .search-form-control .form-control {
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
@@ -48,9 +48,10 @@
 .btn-bar {
   background-color: #E5E5E5;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
   height: 65px;
+  padding-top: 16px;
 }
 
 .btn-bar .search-btn .btn {
@@ -63,27 +64,55 @@
   border-radius: 8px;
 }
 
+//Cards + map styling
+
+.card-map-container {
+  display: flex;
+  padding: 0px 8px 8px 8px;
+  justify-content: space-between;
+}
+
 //Image card styling below
 
-.camera-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-}
-
-.camera-cards {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.camera-cards > img {
-  height: 30%;
+.holder {
   width: 100%;
-  object-fit: cover;
+  display: flex;
+  flex-direction: row;
+  background-color: #E5E5E5
 }
 
-.camera-cards .name-styling {
+.cards {
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  justify-content: space-around;
+  overflow: scroll;
+  padding: 16px 16px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.cam-card {
+  width: 30%;
+  box-shadow: 0px 1px 3px rgba(14, 14, 14, 0.25);
+  margin: 8px;
+
+}
+
+.cam-img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.info-holder {
+  padding: 10px 20px;
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+.cam-card #name-styling {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -91,11 +120,11 @@
   line-height: 21px;
   display: flex;
   align-items: center;
-  color: #000000;
-
+  color: black;
+  padding-left: 8px;
 }
 
-.camera-cards .price-styling {
+.cam-card #price-styling {
   font-family: Neucha;
   font-style: normal;
   font-weight: normal;
@@ -105,9 +134,11 @@
   display: flex;
   align-items: center;
   color: #72CFAE;
+  padding-left: 8px;
+  margin-bottom: 0px;
 }
 
-.camera-cards .address-styling {
+.cam-card #address-styling {
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
@@ -116,72 +147,52 @@
   display: flex;
   align-items: center;
   color: #808080;
+  padding-left: 8px;
 }
 
 
-.camera-cards .camera-cards-info {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
 
 // MAP styling below
 
-.body-container {
-  width:100%;
-  height:100%;
-  position:relative;
-  // white-space: nowrap;
-  // overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.index-map {
-  top: 0;
-  width:33%;
-  height: 100%;
-  right:0;
-  bottom: 0;
-  position:absolute;
+.map-holder {
+  width: 30%;
+  height: 100vh;
 }
 
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+// // Smallest device
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .cards {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
+// // Small devices (landscape phones, 576px and up)
+// @media (min-width: 576px) {
+//   .cards {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
+// // Medium devices (tablets, 768px and up)
+// @media (min-width: 768px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
 
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+// // Large devices (desktops, 992px and up)
+// @media (min-width: 992px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+// // Extra large devices (large desktops, 1200px and up)
+// @media (min-width: 1200px) {
+//   .cards {
+//     grid-template-columns: 1fr 1fr 1fr;
+//   }
+// }
 
 
