@@ -8,6 +8,7 @@
   <%= link_to "Index", cameras_path  %>
 
 
+
 <div class="container">
 
   <div class="row">
@@ -45,4 +46,15 @@
 </div>
 
 
+
+<% @user.rentals.each do |rental| %>
+  <%= cl_image_tag rental.camera.photo, class: 'cam-img' %>
+  <h3><%= rental.camera.name %></h3>
+  <h3><%= rental.camera.brand %></h3>
+  <h3><%= rental.camera.description %></h3>
+  <p>Date of rental: <%= rental.camera.created_at.strftime("%d/%m/%Y at %I:%M%p") %></p>
+  <%= link_to(rental_path(rental), method: :delete) do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+<% end %>
 

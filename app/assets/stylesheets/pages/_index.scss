@@ -2,49 +2,9 @@
 @import "home";
 @import "new";
 @import "profile";
-// @import navbar;
 
-.navbar-firefly {
-  background-color: #843477;
-  justify-content: space-between;
 
-}
 
-.navbar-firefly .navbar-collapse {
-  flex-grow: 0;
-  color: white;
-}
-
-.navbar-firefly .navbar-brand img {
-  width: 35px;
-}
-
-.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .nav-link.active {
-    color: rgba(251, 249, 249, 0.9);
-}
-
-// Search form CSS below
-.search-form-control {
-  position: relative;
-  width: 302px;
-  height: 35px;
-  left: 89px;
-  top: 21px;
-  background: #FFFFFF;
-  border-radius: 8px;
-}
-
-.search-form-control .form-control {
-  height: 3.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
-}
-
-.search-form-control .form-control:focus {
-  border: 1px solid #1EDD88;
-  outline: none !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
 
 .btn-bar {
   background-color: #E5E5E5;
@@ -91,7 +51,7 @@
   overflow: scroll;
   padding: 16px 16px;
   background-color: white;
-  border-radius: 5px;
+  // border-radius: 5px;
 }
 
 .cam-card {
@@ -158,6 +118,8 @@
 .map-holder {
   width: 30%;
   height: 100vh;
+  border: 1px solid #E5E5E5;
+
 }
 
 

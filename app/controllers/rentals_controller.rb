@@ -1,6 +1,6 @@
 class RentalsController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :find_camera, only: [:show, :new, :create, :destroy]
+  before_action :find_camera, only: [:show, :new, :create]
 
   def index
     @rentals = policy_scope(Rental)
@@ -11,7 +11,7 @@ class RentalsController < ApplicationController
 
   def show
     @user = current_user
-    @rental = Rental.find(param[:id])
+    @rental = Rental.find(params[:id])
   end
 
   def new
@@ -24,17 +24,18 @@ class RentalsController < ApplicationController
     authorize @rental
     @rental.camera = @camera
     if @rental.save
-      redirect_to camera_rentals_path
+      redirect_to user_path(current_user)
     else
       render :new
     end
   end
 
-  # def destroy
-  #   @rental = Rental.find(params[:id])
-  #   @rental.destroy
-  #   redirect_to camera_rentals_path
-  # end
+  def destroy
+    @rental = Rental.find(params[:id])
+    @rental.destroy
+    redirect_to user_path(current_user)
+    authorize @rental
+  end
 
   private
 

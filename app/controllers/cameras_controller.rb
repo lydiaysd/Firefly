@@ -1,13 +1,19 @@
 class CamerasController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_policy_scoped
   before_action :find_camera, only: [:show, :destroy]
 
   def index
-    @cameras = policy_scope(Camera)
-    @many_cameras = []
-    6.times do
-      @cameras.each {|camera| @many_cameras << camera}
+    if params[:query].present?
+      @cameras = Camera.search_cameras(params[:query])
+    else
+      @cameras = policy_scope(Camera)
     end
+
+    # @many_cameras = []
+    # 6.times do
+    #   @cameras.each {|camera| @many_cameras << camera}
+    # end
 
     @markers = @cameras.map do |camera|
       {
@@ -15,6 +21,16 @@ class CamerasController < ApplicationController
         lng: camera.longitude
       }
     end
+      # if params[:query].present?
+      #   sql_query = " \
+      #   cameras.name @@ :query \
+      #   OR cameras.brand @@ :query \
+      #   OR cameras.price @@ :query \
+      #   OR cameras.address @@ :query \
+      # "
+      #   @cameras = Camera.where(sql_query, query: "%#{params[:query]}%")
+      # else
+      #   @cameras = policy_scope(Camera)
   end
 
   def show
