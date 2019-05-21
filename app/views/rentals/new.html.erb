@@ -1,0 +1,19 @@
+<div class="container card-rental border">
+  <div class="card-rental-image py-5 rounded-lg">
+    <%= cl_image_tag @camera.photo, width: 396 %>
+  </div>
+  <div class="container card-rental-info my-2">
+    <h1>Rent this <%= @camera.name %>!</h1>
+    <h3>Seller Description: <%= @camera.description %></h3>
+    <h3>Listed Price: £ <%= @camera.price %></h3>
+    <div class="card-rental-payment">
+      <p>Insert Stripe</p>
+    </div>
+  </div>
+  <div id="card-rental-button">
+    <%= simple_form_for([@camera, @rental]) do |f| %>
+    <%= f.submit "Confirm", class: "card-rental-button btn btn-primary"%>
+    <% end %>
+    <%= link_to "Back", camera_path(@camera) %>
+  </div>
+</div>
