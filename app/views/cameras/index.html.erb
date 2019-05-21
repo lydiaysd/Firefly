@@ -13,8 +13,10 @@
 
 <!-- iteration for cards to be created AKA keep creating cards if there's data-->
 
+
 <div class="holder">
-  <div class="cards">
+<!--   Add render here for camera cards and delete html below
+ -->  <div class="cards">
     <% @many_cameras.each do |camera| %>
       <div class="cam-card">
         <%= cl_image_tag camera.photo, class: 'cam-img' %>
