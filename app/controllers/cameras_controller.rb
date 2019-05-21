@@ -10,10 +10,10 @@ class CamerasController < ApplicationController
       @cameras = policy_scope(Camera)
     end
 
-    @many_cameras = []
-    6.times do
-      @cameras.each {|camera| @many_cameras << camera}
-    end
+    # @many_cameras = []
+    # 6.times do
+    #   @cameras.each {|camera| @many_cameras << camera}
+    # end
 
     @markers = @cameras.map do |camera|
       {
