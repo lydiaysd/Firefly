@@ -1,60 +1,37 @@
+<div class="row-cont" style="display:flex;width:100vw;height:100vh;flex-direction:row;">
+  <div class="profile" style="width:20%;background-color:red;">
+    <p> <%= @user.name %></p>
+    <p> <%= @user.email %></p>
+    <p> <%= @user.phone_number %></p>
 
-  <%= @user.name %>
-  <%= @user.bio %>
-  <%= @user.phone_number %>
+    <%= link_to "My Cameras", dashboard_path %>
 
-  <%= link_to "My Cameras", dashboard_path %>
-
-  <%= link_to "Index", cameras_path  %>
-
-
-
-<div class="container">
-
-  <div class="row">
-    <div class="col-lg-2 profile">
-      <p>profile</p>
-    </div>
-
-    <div class="col-lg-5 card-holder">
-      <div class="cards">
-        <% @many_cameras.each do |camera| %>
-        <div class="cam-card">
+    <%= link_to "Index", cameras_path  %>
+  </div>
+  <div class="profile" style="width:40%;background-color:blue;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:left;overflow:scroll;">
+    <% @cameras.each do |camera| %>
+      <div class="cam-card">
         <%= cl_image_tag camera.photo, class: 'cam-img' %>
         <div class="info-holder">
-          <p id="name-styling"><%= link_to camera.name, camera_path(camera) %>/<%= camera.brand %> </p>
+          <p id="name-styling"><%= link_to camera.name, camera_path(camera) %></p>
           <p id="price-styling"> £<%= camera.price  %> </p>
           <p id="address-styling"> <%= camera.address %> </p>
         </div>
       </div>
-    </div>
-
-    <div class="col-lg-5 card-holder">
-        <% @user.rentals.each do |rental| %>
-          <div class="cameraitem">
-            <%= cl_image_tag rental.camera.photo, class: "item-image" %>
-            <div class="itemcontent">
-              <p><%= rental.camera.name %></p>
-              <p><%= rental.camera.brand %></p>
-              <p><%= rental.camera.description %></p>
-            </div>
-          </div>
-        <% end %>
-    </div>
-
+    <% end %>
   </div>
+  <div class="profile" style="width:40%;background-color:green;">
+    <% @user.rentals.each do |rental| %>
+      <div class="cam-card">
+        <%= cl_image_tag rental.camera.photo, class: 'cam-img' %>
+        <div class="info-holder">
+          <p id="name-styling"><%= link_to rental.camera.name, camera_path(camera) %></p>
+          <p id="price-styling"> £<%= rental.camera.price  %> </p>
+          <p id="address-styling"> <%= rental.camera.address %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
 </div>
-
-
-
-<% @user.rentals.each do |rental| %>
-  <%= cl_image_tag rental.camera.photo, class: 'cam-img' %>
-  <h3><%= rental.camera.name %></h3>
-  <h3><%= rental.camera.brand %></h3>
-  <h3><%= rental.camera.description %></h3>
-  <p>Date of rental: <%= rental.camera.created_at.strftime("%d/%m/%Y at %I:%M%p") %></p>
-  <%= link_to(rental_path(rental), method: :delete) do %>
-    <i class="fas fa-trash"></i>
-  <% end %>
-<% end %>
 
