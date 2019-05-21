@@ -7,3 +7,42 @@
 
   <%= link_to "Index", cameras_path  %>
 
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-2 profile">
+      <p>profile</p>
+    </div>
+
+    <div class="col-lg-5 card-holder">
+      <div class="cards">
+        <% @many_cameras.each do |camera| %>
+        <div class="cam-card">
+        <%= cl_image_tag camera.photo, class: 'cam-img' %>
+        <div class="info-holder">
+          <p id="name-styling"><%= link_to camera.name, camera_path(camera) %>/<%= camera.brand %> </p>
+          <p id="price-styling"> £<%= camera.price  %> </p>
+          <p id="address-styling"> <%= camera.address %> </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-5 card-holder">
+        <% @user.rentals.each do |rental| %>
+          <div class="cameraitem">
+            <%= cl_image_tag rental.camera.photo, class: "item-image" %>
+            <div class="itemcontent">
+              <p><%= rental.camera.name %></p>
+              <p><%= rental.camera.brand %></p>
+              <p><%= rental.camera.description %></p>
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+  </div>
+</div>
+
+
+

@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :cameras
   has_many :rentals
+  # has_many :rented_cameras, through: :rentals, source: :camera
 end
