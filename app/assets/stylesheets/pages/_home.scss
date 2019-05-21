@@ -69,13 +69,18 @@ p {
 
 }
 
+abbr {
+  text-decoration: none !important;
+  color: #843477;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #843477;
   border-color: #843477;
   position: relative;
-  margin-top: 10px;
-  float: right;
+  // margin-top: 10px;
+  // float: right;
   width: 150px;
   border-radius: 5px;
   box-shadow: 0 4px 4px rgba(0,0,0,0.2);
