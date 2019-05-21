@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #6F2663;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -8,5 +8,24 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 35px;
+}
+
+
+.fulana-input {
+  position: absolute;
+  margin-left: 40px;
+  height: 30px;
+  width: 300px;
+  background-color: #6F2663;
+  outline: 0;
+  padding: 5px 0;
+  color: #898989;
+  font-size: 11px;
+  border-radius: 50px;
+
+  // &:focus {
+  //   outline: 0;
+  // }
+
 }

@@ -4,6 +4,10 @@ class CamerasController < ApplicationController
 
   def index
     @cameras = policy_scope(Camera)
+    @many_cameras = []
+    6.times do
+      @cameras.each {|camera| @many_cameras << camera}
+    end
 
     @markers = @cameras.map do |camera|
       {
