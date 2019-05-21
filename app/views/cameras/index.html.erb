@@ -35,8 +35,11 @@
           <% if current_user %>
             <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
           <% end %>
-          <%= link_to "log in", new_user_session_path, class: "dropdown-item" %>
-          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% if current_user %>
+            <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "log in", new_user_session_path, class: "dropdown-item" %>
+          <% end %>
         </div>
       </li>
     </ul>
@@ -77,17 +80,4 @@
     ></div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<%= link_to "log out", destroy_user_session_path, method: :delete %>
 
