@@ -25,7 +25,7 @@
       <div class="cam-card">
         <%= cl_image_tag rental.camera.photo, class: 'cam-img' %>
         <div class="info-holder">
-          <p id="name-styling"><%= link_to rental.camera.name, camera_path(camera) %></p>
+          <p id="name-styling"><%= link_to rental.camera.name, camera_path(rental.camera) %></p>
           <p id="price-styling"> £<%= rental.camera.price  %> </p>
           <p id="address-styling"> <%= rental.camera.address %> </p>
         </div>
