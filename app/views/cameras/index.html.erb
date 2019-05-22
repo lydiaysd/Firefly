@@ -19,7 +19,11 @@
  -->  <div class="cards">
     <% @cameras.each do |camera| %>
       <div class="cam-card">
-        <%= cl_image_tag camera.photo, class: 'cam-img' %>
+        <% if camera.photo? %>
+          <%= cl_image_tag camera.photo, class: 'cam-img' %>
+        <% else %>
+          <%= image_tag("default-camera.jpg", class: 'cam-img') %>
+        <% end %>
         <div class="info-holder">
           <p id="name-styling"><%= link_to camera.name.truncate(10), camera_path(camera) %>/<%= camera.brand.truncate(10) %> </p>
           <p id="price-styling"> £<%= camera.price  %> </p>
