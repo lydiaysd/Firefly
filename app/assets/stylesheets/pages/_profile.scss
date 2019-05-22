@@ -1,16 +1,10 @@
-//Page Container
-
 .holder-show {
   width: 100%;
   display: flex;
   flex-direction: row;
   background-color: white;
   padding: 16px;
-
-  // #E5E5E5
 }
-
-//Profile Container
 
 .profile-show {
   width: 25%;
@@ -18,8 +12,6 @@
   border-right: 1px solid #E5E5E5;
   background-color: white;
 }
-
-//Listings container
 
 .listings-show {
   width: 38%;
@@ -34,8 +26,6 @@
   border-right: 1px solid #E5E5E5;
 }
 
-//Rentals container
-
 .rentals-show {
   width: 35%;
   display: flex;
@@ -46,9 +36,7 @@
   background-color: white;
   margin-left: 10px;
 }
-
 //Camera Card styling
-
 .cam-card-show {
   width: 186px;
   height: 159px;
@@ -106,16 +94,11 @@
     align-items: center;
     color: #808080;
     padding-left: 0px;
-
 }
-
 body {
   background-color: white;
 }
-
 //Profile styling
-
-
 
 h2 h5 {
   font-family: Raleway;
@@ -126,7 +109,6 @@ h2 h5 {
   display: flex;
   align-items: center;
 }
-
 h5 {
  font-family: Raleway;
     font-style: normal;
@@ -143,14 +125,12 @@ h5 {
   height: 165px;
   width: 165px;
 }
-
 .user-label {
   font-size: 18px;
   line-height: 22px;
   margin-bottom: 0px;
   margin-top: 18px;
 }
-
 .user-data {
   font-family: Montserrat;
   font-style: normal;
@@ -162,7 +142,6 @@ h5 {
   margin-top: 0;
   color: #848484;
 }
-
 
 #edit_user_3 {
   height:50%;
@@ -180,7 +159,3 @@ h5 {
     display: flex;
     flex-wrap: wrap;
 }
-
-
-
-

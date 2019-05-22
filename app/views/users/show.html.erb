@@ -33,7 +33,9 @@
         <div class="info-holder-show">
           <p id="name-styling-show"><%= link_to camera.name.truncate(10), camera_path(camera) %>/<%= camera.brand.truncate(10) %></p>
           <p id="price-styling-show"> £<%= camera.price  %> </p>
-          <p id="address-styling-show"> <%= camera.address.truncate(31) %> </p>
+          <% if camera.address? %>
+            <p id="address-styling"> <%= camera.address.truncate(31) %> </p>
+          <% end %>
         </div>
       </div>
     <% end %>

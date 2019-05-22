@@ -23,7 +23,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active"><%= link_to "All Cameras", cameras_path, class: "nav-link" %></li>
         <li class="nav-item active"><%= link_to "List Camera", new_camera_path, class: "nav-link" %></li>
-        <li class="nav-item dropdown"><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <li class="nav-item dropdown"><%= image_tag "default_avatar.jpeg", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, class: "nav-avatar" %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
             <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
