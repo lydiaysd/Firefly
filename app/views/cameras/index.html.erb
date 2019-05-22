@@ -21,7 +21,7 @@
       <div class="cam-card">
         <%= cl_image_tag camera.photo, class: 'cam-img' %>
         <div class="info-holder">
-          <p id="name-styling"><%= link_to camera.name, camera_path(camera) %>/<%= camera.brand %> </p>
+          <p id="name-styling"><%= link_to camera.name.truncate(10), camera_path(camera) %>/<%= camera.brand.truncate(8) %> </p>
           <p id="price-styling"> £<%= camera.price  %> </p>
           <p id="address-styling"> <%= camera.address %> </p>
         </div>
