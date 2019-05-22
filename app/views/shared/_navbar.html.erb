@@ -6,7 +6,7 @@
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <%= simple_form_for :search, url: root_path, method: :get, class: "search-bar" do |f| %>
+    <%= simple_form_for :search, url: cameras_path, method: :get, class: "search-bar" do |f| %>
       <%= f.input :query, label: false, placeholder:'&#xf002; Search for cameras...'.html_safe, input_html: {class:'fas search-input ml-1'}, wrapper_html: { class: 'm-0' } %>
     <% end %>
   </div>
