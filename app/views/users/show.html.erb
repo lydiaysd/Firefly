@@ -1,6 +1,21 @@
-<div class="row-cont" style="display:flex;width:100vw;height:100vh;flex-direction:row;">
-  <div class="profile" style="width:20%;background-color:red;">
-    <p> <%= @user.name %></p>
+<div class="row-cont" style="display:flex;width:100vw;flex-direction:row;">
+  <div class="profile" style="width:20%;background-color:#E5E5E5; ">
+    <h2>Profile</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar-small">
+
+
+    <p class="user-label">NAME</p>
+      <%= simple_form_for(current_user) do |f| %>
+      <%= f.input :name %>
+
+      <% end %>
+
+       <p>Type description here</p>
+    <p class="user-data"> <%= @user.name %></p>
+
+    <p class="user-label">BIO</p>
+    <p class="user-data"> <%= @user.bio %></p>
+       <p>Type here</p>
     <p> <%= @user.email %></p>
     <p> <%= @user.phone_number %></p>
 
@@ -8,9 +23,13 @@
 
     <%= link_to "Index", cameras_path  %>
   </div>
-  <div class="profile" style="width:40%;background-color:blue;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:left;overflow:scroll;">
+
+  <div class="card d-flex allcameracontainer">
+  <div class="profile" style="width:40%;background-color:white;display:flex;flex-direction:row;flex-wrap:wrap;justify-content:left;overflow:scroll;">
+  <h5 class="card-header">Your Listings</h5>
+  <div class="card-container">
     <% @cameras.each do |camera| %>
-      <div class="cam-card">
+      <div class="cam-card grid-card">
         <%= cl_image_tag camera.photo, class: 'cam-img' %>
         <div class="info-holder">
           <p id="name-styling"><%= link_to camera.name, camera_path(camera) %></p>
@@ -20,9 +39,13 @@
       </div>
     <% end %>
   </div>
-  <div class="profile" style="width:40%;background-color:green;">
+  </div>
+
+  <div class="profile" style="width:40%;background-color: white;">
+  <h5 class="card-header">Rentals</h5>
+  <div class="card-container">
     <% @user.rentals.each do |rental| %>
-      <div class="cam-card">
+      <div class="cam-card grid-card">
         <%= cl_image_tag rental.camera.photo, class: 'cam-img' %>
         <div class="info-holder">
           <p id="name-styling"><%= link_to rental.camera.name, camera_path(rental.camera) %></p>
@@ -31,6 +54,7 @@
         </div>
       </div>
     <% end %>
+  </div>
   </div>
 
 </div>
