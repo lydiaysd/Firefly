@@ -5,4 +5,3 @@ class UsersController < ApplicationController
     @cameras = @user.cameras
   end
 end
-
