@@ -10,7 +10,7 @@
 
 .new-item-form {
   background-color: white;
-  width: 75%;
+  width: 70%;
   height: 100%;
   margin: auto;
   border-radius: 8px;
@@ -32,6 +32,21 @@
 // }
 
 .left-section {
+  padding-left: 10px;
+}
+
+.right-section {
+  padding-right: 10px;
+}
+
+.left-section {
+  h5 {
+    color: #5B525A;
+    font-family: Montserrat;
+  }
+}
+
+.right-section {
   h5 {
     color: #5B525A;
     font-family: Montserrat;
@@ -62,6 +77,13 @@
   }
 }
 
+.right-inputs {
+  p {
+    color: #843477;
+    font-weight: bold;
+  }
+}
+
 .upload-photo {
   display: flex;
   justify-content: center;
@@ -78,3 +100,17 @@
     object-fit: contain;
   }
 }
+
+#buttons {
+  margin-top: 16px;
+}
+
+
+.take-width {
+  flex-grow: 1;
+  margin-left: 16px;
+}
+// &.hide-on-focus:focus {
+//   &::-webkit-input-placeholder {
+//      color: white;
+//   }

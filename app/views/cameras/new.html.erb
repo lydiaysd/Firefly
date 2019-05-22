@@ -5,7 +5,7 @@
   <%= simple_form_for @camera do |f| %>
   <div class="d-flex justify-content-between align-items-start">
     <div class="left-section mr-2">
-      <h5>What's the camera?</h5>
+      <h5>Camera</h5>
       <div class="d-flex">
         <div class="left-inputs">
           <%= f.input :brand, label: false, placeholder:'Nikon', wrapper_html: { class: 'mr-2 mb-1' } %>
@@ -20,15 +20,33 @@
       <%= f.input :photo_cache, as: :hidden %>
       <%= image_tag "", width: 100, height:100, class: "d-none", id: "photo-preview" %>
     </div>
-    <div class="right-section ml-2">
-      <%= f.input :description, label: false, placeholder:'description', input_html: { rows: 4 } %>
-      <%= f.input :address, label: false, placeholder:'address' %>
-      <%= f.input :price, label: false, placeholder:'price/day' %>
-      <%= f.date_select :start_date %>
-      <%= f.date_select :end_date %>
+    <div class="right-section mr-2 take-width">
+      <h5>Description</h5>
+       <div class="right-section mr-2">
+        <%= f.input :description, label: false, placeholder:'Please describe your camera', input_html: { rows: 4 } %>
+      </div>
+      <div class="right-section mr-2">
+        <h5>Address</h5>
+        <%= f.input :address, label: false %>
+      </div>
+      <div class="right-section mr-2">
+        <h5>Price</h5>
+          <%= f.input :price, label: false, placeholder:'Price/day(£)' %>
+      </div>
+       <div class="right-section mr-2">
+          <h5>Available Dates</h5>
+            <div class="right-inputs">
+              <%= f.date_select :start_date %>
+              <p>Start Date</p>
+            </div>
+            <div class="right-inputs">
+              <%= f.date_select :end_date %>
+              <p>End Date</p>
+            </div>
+      </div>
     </div>
   </div>
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center" id="buttons">
       <%= link_to 'Back', cameras_path, class: "btn btn-primary back-btn" %>
       <%= f.submit "Add", class: "btn btn-primary" %>
     </div>
