@@ -6,10 +6,10 @@ class CamerasController < ApplicationController
   def index
     if params[:query].present?
       @cameras = Camera.search_cameras(params[:query])
-      @cameras = Camera.where.not(user: current_user)
+      # @cameras = Camera.where.not(user: current_user)
     else
       @cameras = policy_scope(Camera)
-      @cameras = Camera.where.not(user: current_user)
+      # @cameras = Camera.where.not(user: current_user)
     end
 
     @markers = @cameras.map do |camera|
@@ -32,7 +32,6 @@ class CamerasController < ApplicationController
   def new
     @camera = Camera.new
     authorize @camera
-
   end
 
   def create
