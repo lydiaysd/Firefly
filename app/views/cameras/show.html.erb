@@ -1,11 +1,89 @@
-<h1 class="text-center m-3"> Camera <%= @camera.name %></h1>
-<%= cl_image_tag @camera.photo, height: 300, width: 400, crop: :fill %>
-<% unless current_user == @camera.user %>
-  <%= link_to "Rent!", new_camera_rental_path(@camera, @user), class: "btn btn-primary" %>
-<% end %>
+<div class="container d-flex flex-column justify-content-between align-items-center" style="background-color: white;">
+  <div class="header-container my-3 w-100">
+    <h2 class="my-3"> Camera: <%= @camera.name %></h2>
+  </div>
 
-<%= link_to 'Back', cameras_path, class: "btn btn-primary" %>
-<% if current_user == @camera.user %>
-  <%= link_to 'Delete', camera_path(@camera), method: :delete, class: "btn btn-primary" %>
-<% end %>
+  <div class="first-container w-100">
+    <div class="item-picture">
+      <%= cl_image_tag @camera.photo, crop: :fill %>
+    </div>
 
+    <div class="wrap-item-price-card align-items-start p-3 justify-content-between">
+      <h3>£<%= @camera.price %> per day</h3>
+      <h5>John Smith</h5>
+      <div class="price-card_rating d-flex flex-row">
+        <i class="fas fa-star"></i><h5><b> 4.7</b> (based on X reviews)</h5>
+      </div>
+      <h5>When do you want it?</h5>
+
+      <div class="form-inline" style="justify-content: space-between;">
+        <div style="width: 48%">
+          <div class="field-header"><p>START DATE</p></div>
+          <%= text_field_tag :start_date, placeholder="", class: "form-field"  %>
+        </div>
+        <div style="width: 48%">
+          <div class="field-header"> <p>END DATE</p> </div>
+          <%= text_field_tag :end_date, placeholder="", class: "form-field"  %>
+        </div>
+      </div>
+
+      <% unless current_user == @camera.user %>
+      <%= link_to 'Rent', new_camera_rental_path(@camera, @user), class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+
+
+  <div class="second-container w-100 justify-content-between my-4">
+    <div class="item-location-card m-0 d-flex flex-column justify-content-between align-items-start">
+      <div style="" class="p-3 d-flex justify-content-start align-items-center">
+        <h3 class="my-0 mr-2">Location</h3>
+        <h4 class="my-0"><%= @camera.address.upcase %></h4>
+      </div>
+
+      <div
+        id="map"
+        style="width: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        class="flex-grow-1"
+      ></div>
+    </div>
+
+    <div class="item-details-card m-0 p-3">
+      <div style="height:20%;">
+        <h3>Details</h3>
+      </div>
+      <div class="brand-detail">
+        <h4>BRAND</h4>
+        <h5><%= @camera.brand %></h5>
+      </div>
+      <div class="model-detail">
+        <h4>MODEL</h4>
+        <h5><%= @camera.name %></h5>
+      </div>
+      <div class="description-detail">
+        <h4>DESCRIPTION</h4>
+        <h6><%= @camera.description %></h6>
+      </div>
+    </div>
+
+    <div class="item-owner-card m-0 p-3">
+      <div style="height:20%;">
+        <h3>Owner</h3>
+      </div>
+      <div class="owner-name">
+        <h4>NAME</h4>
+        <h5><%= @camera.user %></h5>
+      </div>
+      <div class="owner-bio">
+        <h4>BIO</h4>
+        <h6><%= @camera.user.bio %></h6>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

@@ -14,7 +14,7 @@ class Camera < ApplicationRecord
 
   include PgSearch
   pg_search_scope :search_cameras,
-    against: [ :name, :brand, :price, :address ],
+    against: [ :name, :brand, :price, :address, :start_date, :end_date],
     using: {
       tsearch: { prefix: true }
     }

@@ -1,46 +1,46 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-firefly justify-content-between">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to cameras_path, class: "navbar-brand" do %>
     <div class="image-logo">
       <%= image_tag 'firefly-white-logo.png' %>
     </div>
   <% end %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <%= simple_form_for :search, url: cameras_path, method: :get, class: "search-bar" do |f| %>
-      <form class="form-inline string required" type="text" name="search[query]" id="fulana-input">
-        <input class="form-control fas" type="text" name="query" placeholder='&#xf002; Search for cameras...'/>
-      </form>
-    <% end %>
-  </div>
+      <%= simple_form_for :search, url: cameras_path, method: :get, class: "search-bar" do |f| %>
+        <form class="form-inline string required" type="text" name="search[query]" id="fulana-input">
+          <input class="form-control fas" type="text" name="query" placeholder='&#xf002; Search for cameras...'/>
+        </form>
+      <% end %>
+    </div>
 
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
-
-  <div class="collapse navbar-collapse move-right" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "List a camera", new_camera_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Log in", user_session_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item dropdown">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <% if current_user %>
+  <% if user_signed_in? %>
+    <div class="collapse navbar-collapse move-right" id="navbarSupportedContent" style="flex-grow: 0;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><%= link_to "All Cameras", cameras_path, class: "nav-link" %></li>
+        <li class="nav-item active"><%= link_to "List Camera", new_camera_path, class: "nav-link" %></li>
+        <li class="nav-item dropdown"><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-          <% end %>
-          <%= link_to "log in", new_user_session_path, class: "dropdown-item" %>
-          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-        </div>
-      </li>
-    </ul>
-  </div>
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  <% else %>
+    <div class="collapse navbar-collapse move-right" id="navbarSupportedContent" style="flex-grow: 0;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active"><%= link_to "All Cameras", cameras_path, class: "nav-link" %></li>
+        <li class="nav-item active"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+        <li class="nav-item active"><%= link_to "Log In", user_session_path, class: "nav-link" %></li>
+        <li class="nav-item dropdown"><%= image_tag "firefly-white-logo.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %></li>
+      </ul>
+    </div>
+  <% end %>
 </div>
+

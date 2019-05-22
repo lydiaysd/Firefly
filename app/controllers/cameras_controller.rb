@@ -6,14 +6,11 @@ class CamerasController < ApplicationController
   def index
     if params[:query].present?
       @cameras = Camera.search_cameras(params[:query])
+      # @cameras = Camera.where.not(user: current_user)
     else
       @cameras = policy_scope(Camera)
+      # @cameras = Camera.where.not(user: current_user)
     end
-
-    # @many_cameras = []
-    # 6.times do
-    #   @cameras.each {|camera| @many_cameras << camera}
-    # end
 
     @markers = @cameras.map do |camera|
       {
@@ -21,20 +18,15 @@ class CamerasController < ApplicationController
         lng: camera.longitude
       }
     end
-      # if params[:query].present?
-      #   sql_query = " \
-      #   cameras.name @@ :query \
-      #   OR cameras.brand @@ :query \
-      #   OR cameras.price @@ :query \
-      #   OR cameras.address @@ :query \
-      # "
-      #   @cameras = Camera.where(sql_query, query: "%#{params[:query]}%")
-      # else
-      #   @cameras = policy_scope(Camera)
   end
 
   def show
     authorize @camera
+    @markers =
+      [{
+        lat: @camera.latitude,
+        lng: @camera.longitude
+      }]
   end
 
   def new

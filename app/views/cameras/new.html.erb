@@ -1,22 +1,58 @@
-<h2 class="new-page-title">Ok, let's create you item..</h2>
-<div class="container-camera">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-md-6 col-sm-2 d-flex flex-wrap justify-content-center p-3 m-3">
-        <%= simple_form_for [@camera] do |f| %>
-          <%= f.input :name %>
-          <%= f.input :brand %>
-          <%= f.input :price %>
-          <%= f.input :description %>
-          <%= f.input :address %>
-          <%= f.date_select :start_date %>
-          <%= f.date_select :end_date %>
-          <%= f.input :photo %>
-          <%= f.input :photo_cache, as: :hidden %>
-          <%= f.submit "Add", class: "btn btn-primary" %>
-          <%= link_to 'Back', cameras_path, class: "btn btn-primary float-left" %>
-        <% end %>
+<!-- NAVBAR IMPORTED-->
+
+<div class="new-item-form mt-4">
+  <h2 class="new-page-title">Add a new camera</h2>
+  <%= simple_form_for @camera do |f| %>
+  <div class="d-flex justify-content-between align-items-start">
+    <div class="left-section mr-2">
+      <h5>Camera</h5>
+      <div class="d-flex">
+        <div class="left-inputs">
+          <%= f.input :brand, label: false, placeholder:'Nikon', wrapper_html: { class: 'mr-2 mb-1' } %>
+          <p>Brand</p>
+        </div>
+        <div class="left-inputs">
+          <%= f.input :name, label: false, placeholder:'D90', wrapper_html: { class: 'mb-1' } %>
+          <p>Model</p>
+        </div>
+      </div>
+      <%= f.input :photo, input_html: { class: 'd-none', id:'photo-input'}, label_html: { class: 'upload-photo'}, label: "#{image_tag 'cloud_upload.png'}(click here to upload images)".html_safe %>
+      <%= f.input :photo_cache, as: :hidden %>
+      <%= image_tag "", width: 100, height:100, class: "d-none", id: "photo-preview" %>
+    </div>
+    <div class="right-section mr-2 take-width">
+      <h5>Description</h5>
+       <div class="right-section mr-2">
+        <%= f.input :description, label: false, placeholder:'Please describe your camera', input_html: { rows: 4 } %>
+      </div>
+      <div class="right-section mr-2">
+        <h5>Address</h5>
+        <%= f.input :address, label: false %>
+      </div>
+      <div class="right-section mr-2">
+        <h5>Price</h5>
+          <%= f.input :price, label: false, placeholder:'Price/day(£)' %>
+      </div>
+       <div class="right-section mr-2">
+          <h5>Available Dates</h5>
+            <div class="right-inputs">
+              <%= f.date_select :start_date %>
+              <p>Start Date</p>
+            </div>
+            <div class="right-inputs">
+              <%= f.date_select :end_date %>
+              <p>End Date</p>
+            </div>
       </div>
     </div>
   </div>
+    <div class="d-flex justify-content-between align-items-center" id="buttons">
+      <%= link_to 'Back', cameras_path, class: "btn btn-primary back-btn" %>
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    </div>
+  <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+  <%= javascript_pack_tag 'components/photo_uploader' %>
+<% end %>
