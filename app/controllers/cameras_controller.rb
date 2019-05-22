@@ -22,11 +22,17 @@ class CamerasController < ApplicationController
 
   def show
     authorize @camera
+    @markers =
+      [{
+        lat: @camera.latitude,
+        lng: @camera.longitude
+      }]
   end
 
   def new
     @camera = Camera.new
     authorize @camera
+
   end
 
   def create
