@@ -1,13 +1,16 @@
 class CamerasController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_policy_scoped
   before_action :find_camera, only: [:show, :destroy]
 
   def index
-    @cameras = policy_scope(Camera)
-    @many_cameras = []
-    6.times do
-      @cameras.each {|camera| @many_cameras << camera}
+    if params[:query].present?
+      @cameras = Camera.search_cameras(params[:query])
+    else
+      @cameras = policy_scope(Camera)
+      # @cameras = Camera.where.not(user: current_user)
     end
+
 
     @markers = @cameras.map do |camera|
       {
@@ -19,11 +22,17 @@ class CamerasController < ApplicationController
 
   def show
     authorize @camera
+    @markers =
+      [{
+        lat: @camera.latitude,
+        lng: @camera.longitude
+      }]
   end
 
   def new
     @camera = Camera.new
     authorize @camera
+
   end
 
   def create
