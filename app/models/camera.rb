@@ -18,15 +18,4 @@ class Camera < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-  pg_search_scope :search_brand,
-    against: [ :brand],
-    using: {
-      tsearch: { prefix: true }
-    }
-
-  pg_search_scope :search_location,
-    against: [ :location],
-    using: {
-      tsearch: { prefix: true }
-    }
 end

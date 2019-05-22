@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  skip_before_action :authenticate_user!
+
   before_action :find_camera, only: [:show, :new, :create]
 
   def index
