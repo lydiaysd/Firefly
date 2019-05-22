@@ -1,6 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "new";
+@import "show";
 // @import navbar;
 
 .navbar-firefly {
@@ -150,7 +151,9 @@
   padding-left: 8px;
 }
 
-
+body {
+  background-color: white;
+}
 
 // MAP styling below
 
