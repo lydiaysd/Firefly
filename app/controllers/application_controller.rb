@@ -10,6 +10,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def configure_permitted_parameters
+    # For additional fields in app/views/devise/registrations/new.html.erb
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :bio, :phone_number])
+
+    # For additional in app/views/devise/registrations/edit.html.erb
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :bio, :phone_number])
+  end
+
 
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
