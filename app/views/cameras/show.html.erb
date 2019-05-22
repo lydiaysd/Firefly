@@ -26,9 +26,12 @@
           <%= text_field_tag :end_date, placeholder="", class: "form-field"  %>
         </div>
       </div>
-
-      <%= link_to 'Rent', cameras_path, class: "btn btn-primary" %>
-
+      
+      <% if current_user.nil? %>
+        <%= link_to 'Log in', new_user_session_path, class: "btn btn-primary" %>
+      <% else %>
+        <%= link_to 'Rent', cameras_path, class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 
@@ -85,10 +88,3 @@
   </div>
 
 </div>
-
-
-
-
-
-
-
