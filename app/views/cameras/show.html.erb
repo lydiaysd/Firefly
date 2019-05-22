@@ -27,8 +27,9 @@
         </div>
       </div>
 
-
+      <% unless current_user == @camera.user %>
       <%= link_to 'Rent', new_camera_rental_path(@camera, @user), class: "btn btn-primary" %>
+      <% end %>
 
     </div>
   </div>
