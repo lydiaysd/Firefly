@@ -8,3 +8,4 @@
 # User.create(name: "Harry", bio: "a happy lad who likes taking photos from different angles", email: "harry.potter@gmail.com", phone_number: "0207 01999111")
 # Camera.create(model: "Harry", brand: "Canon", price: "£120", description: "new", address: , photo: '')
 
+#
